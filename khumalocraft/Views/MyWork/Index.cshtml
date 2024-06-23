@@ -1,0 +1,30 @@
+﻿@model IEnumerable<khumalocraft.Models.Product>
+
+@{
+    ViewData["Title"] = "My Work";
+}
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3">
+        @foreach (var product in Model)
+        {
+            <div class="col mb-4">
+                <div class="card h-100">
+                    <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name">
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Name</h5>
+                        <p class="card-text">Description: @product.Description</p>
+                        <p class="card-text">Price: $@product.Price</p>
+                        <p class="card-text">Category: @product.Category</p>
+                        <p class="card-text">Availability: @(product.Availability > 0 ? "Available" : "Out of stock")</p>
+                        <form method="get" asp-action="BuyNow" asp-route-productId="@product.ProductId">
+                            <button type="submit" class="btn btn-primary btn-sm" @(product.Availability > 0 ? "" : "disabled")>Buy Now</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

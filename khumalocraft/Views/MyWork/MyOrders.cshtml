@@ -1,0 +1,22 @@
+﻿@model IEnumerable<khumalocraft.Models.Order>
+
+@{
+    ViewData["Title"] = "My Orders";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@foreach (var order in Model)
+{
+    <div class="order">
+        <h2>Order ID: @order.OrderId</h2>
+        <p>Order Date: @order.OrderDate</p>
+        <p>Total Amount: $@order.TotalAmount</p>
+        <ul>
+            @foreach (var detail in order.OrderDetails)
+            {
+                <li>@detail.Product.Name - Quantity: @detail.Quantity - Price: $@detail.Price</li>
+            }
+        </ul>
+    </div>
+}

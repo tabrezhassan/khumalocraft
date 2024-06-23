@@ -1,0 +1,32 @@
+﻿@model khumalocraft.Models.BuyNowViewModel
+
+@{
+    ViewData["Title"] = "Buy Now";
+}
+
+<h1>Buy Now</h1>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">@ViewBag.Message</div>
+}
+
+<form asp-action="BuyNow" method="post">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name" required />
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required />
+    </div>
+    <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" class="form-control" id="address" name="address" required />
+    </div>
+    <div class="form-group">
+        <label for="quantity">Quantity</label>
+        <input type="number" class="form-control" id="quantity" name="quantity" required min="1" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
